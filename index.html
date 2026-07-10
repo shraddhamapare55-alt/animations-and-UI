@@ -2,217 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animations & UI Feedback</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-@keyframes fadeup {
-  0% { opacity: 0; transform: translateY(25px); }
-  100% { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.card-d0 { animation: fadeup 0.5s ease 0ms forwards; opacity: 0; }
-.card-d1 { animation: fadeup 0.5s ease 150ms forwards; opacity: 0; }
-.card-d2 { animation: fadeup 0.5s ease 300ms forwards; opacity: 0; }
-.card-d3 { animation: fadeup 0.5s ease 450ms forwards; opacity: 0; }
+.fade { animation: fadeUp 0.5s ease forwards; opacity: 0; }
 </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 text-gray-800 p-6">
+<h1 class="text-2xl font-bold text-center">Animations & UI Feedback</h1>
+<p class="text-center text-gray-500 mb-8">hover, click or wait to see the animations</p>
 
-<header class="bg-white py-10 text-center shadow-sm">
-  <h1 class="text-3xl font-bold text-indigo-600">Animations & UI Feedback</h1>
-  <p class="mt-2 text-gray-500">Click and hover on elements below to see them in action.</p>
-</header>
+<h2 class="font-semibold mb-2">Built-in Animations</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+  <div class="bg-white rounded shadow p-3 text-center">
+    <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+    <p class="text-sm mt-2">spin</p>
+  </div>
+  <div class="bg-white rounded shadow p-3 text-center">
+    <div class="w-8 h-8 bg-red-500 rounded-full animate-ping mx-auto"></div>
+    <p class="text-sm mt-2">ping</p>
+  </div>
+  <div class="bg-white rounded shadow p-3 text-center">
+    <div class="w-8 h-8 bg-gray-300 rounded mx-auto animate-pulse"></div>
+    <p class="text-sm mt-2">pulse</p>
+  </div>
+  <div class="bg-white rounded shadow p-3 text-center">
+    <div class="w-8 h-8 bg-green-500 rounded-full mx-auto animate-bounce"></div>
+    <p class="text-sm mt-2">bounce</p>
+  </div>
+</div>
 
-<main class="max-w-5xl mx-auto px-4 py-10 space-y-14">
+<!-- Section 2 -->
+<h2 class="font-semibold mb-2">Button Animations</h2>
+<div class="flex flex-wrap gap-3 mb-8">
+  <button class="bg-blue-500 text-white px-3 py-2 rounded transition-transform duration-300 hover:scale-110">Scale</button>
+  <button class="bg-red-500 text-white px-3 py-2 rounded shadow transition-all duration-300 hover:shadow-lg hover:scale-105">Shadow</button>
+  <button class="bg-green-500 text-white px-3 py-2 rounded transition-colors duration-300 hover:bg-green-700">Color</button>
+  <button class="bg-yellow-500 text-white px-3 py-2 rounded transition-transform duration-300 hover:rotate-6">Rotate</button>
+  <button class="bg-gray-600 text-white px-3 py-2 rounded transition-transform duration-300 hover:-translate-y-1">Lift</button>
+  <button class="bg-blue-600 text-white px-3 py-2 rounded transition-all duration-300 hover:scale-110 active:scale-95">Combo</button>
+</div>
 
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 1: Built-in Animations</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- Section 3 -->
+<h2 class="font-semibold mb-2">Card Animations</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+  <div class="bg-white rounded shadow p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <p class="text-sm">Hover lift</p>
+  </div>
+  <div class="group bg-white rounded shadow p-4">
+    <div class="w-6 h-6 bg-red-400 rounded mb-1 group-hover:scale-125 transition-transform duration-300"></div>
+    <p class="text-sm">Group hover</p>
+  </div>
+  <div class="bg-white rounded shadow p-4 border-2 border-transparent transition-all duration-300 hover:border-blue-500">
+    <p class="text-sm">Border reveal</p>
+  </div>
+</div>
 
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center gap-3 text-center">
-        <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-        <p class="font-semibold text-gray-700">animate-spin</p>
-        <p class="text-xs text-gray-400">Used for loading spinners</p>
-      </div>
+<!-- Section 4 -->
+<h2 class="font-semibold mb-2">Notification Badges</h2>
+<div class="flex gap-6 mb-8">
+  <div class="relative w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+    🔔
+    <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></span>
+  </div>
+  <div class="relative w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+    💬
+    <span class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">2</span>
+  </div>
+  <div class="relative w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+    📧
+    <span class="absolute -top-1 -right-1 bg-green-500 rounded-full w-3 h-3 animate-bounce"></span>
+  </div>
+</div>
 
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center gap-3 text-center">
-        <div class="relative w-10 h-10 flex items-center justify-center">
-          <span class="animate-ping absolute w-8 h-8 rounded-full bg-pink-400 opacity-70"></span>
-          <span class="w-5 h-5 rounded-full bg-pink-500 relative"></span>
-        </div>
-        <p class="font-semibold text-gray-700">animate-ping</p>
-        <p class="text-xs text-gray-400">Notification pulse effect</p>
-      </div>
+<!-- Section 5 -->
+<h2 class="font-semibold mb-2">Loading States</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+  <div class="bg-white rounded shadow p-3">
+    <div class="h-3 bg-gray-300 rounded animate-pulse mb-2 w-3/4"></div>
+    <div class="h-3 bg-gray-300 rounded animate-pulse"></div>
+  </div>
+  <div class="bg-white rounded shadow p-3 flex items-center justify-center">
+    <button class="bg-blue-500 text-white px-3 py-1 rounded flex items-center gap-2 text-sm">
+      <span class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+      Loading
+    </button>
+  </div>
+  <div class="bg-white rounded shadow p-3 flex items-center justify-center gap-1">
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></span>
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay:.2s"></span>
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay:.4s"></span>
+  </div>
+</div>
 
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center gap-3 text-center">
-        <div class="w-full space-y-2">
-          <div class="h-3 bg-gray-200 rounded animate-pulse"></div>
-          <div class="h-3 bg-gray-200 rounded animate-pulse w-3/4"></div>
-          <div class="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
-        </div>
-        <p class="font-semibold text-gray-700">animate-pulse</p>
-        <p class="text-xs text-gray-400">Skeleton loader effect</p>
-      </div>
-
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center gap-3 text-center">
-        <div class="flex gap-1 items-end h-10">
-          <div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay:0ms"></div>
-          <div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay:100ms"></div>
-          <div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay:200ms"></div>
-        </div>
-        <p class="font-semibold text-gray-700">animate-bounce</p>
-        <p class="text-xs text-gray-400">Bounce indicator</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 2: Button Animations</h2>
-    <div class="flex flex-wrap gap-4">
-      <button class="bg-indigo-600 text-white px-5 py-2 rounded-lg transition-transform duration-200 hover:scale-110">Scale Hover</button>
-      <button class="bg-purple-600 text-white px-5 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg">Shadow + Scale</button>
-      <button class="bg-blue-500 text-white px-5 py-2 rounded-lg transition-colors duration-300 hover:bg-orange-500">Color Change</button>
-      <button class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg transition-transform duration-300 hover:rotate-3">Rotate</button>
-      <button class="bg-teal-500 text-white px-5 py-2 rounded-lg transition-transform duration-200 hover:-translate-y-2">Lift Up</button>
-      <button class="bg-red-500 text-white px-5 py-2 rounded-lg transition-all duration-300 hover:scale-110 hover:rotate-1 hover:shadow-xl hover:bg-red-600">Combined</button>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-lg transition-transform duration-150 hover:scale-110 active:scale-95">Active Scale</button>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 3: Card Animations</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-
-      <div class="group bg-white rounded-xl p-6 shadow cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-        <div class="text-2xl mb-3">🚀</div>
-        <h3 class="font-bold text-gray-800 mb-1 group-hover:text-indigo-600 transition-colors duration-300">Hover Lift</h3>
-        <p class="text-sm text-gray-500">Card lifts up with a bigger shadow on hover.</p>
-      </div>
-
-      <div class="group bg-white rounded-xl p-6 shadow cursor-pointer transition-all duration-300 hover:scale-105 hover:rotate-1">
-        <div class="text-2xl mb-3 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">🎨</div>
-        <h3 class="font-bold text-gray-800 mb-1 group-hover:text-pink-500 transition-colors duration-300">Scale & Rotate</h3>
-        <p class="text-sm text-gray-500">Card scales and icon rotates using group-hover.</p>
-      </div>
-
-      <div class="group bg-white rounded-xl p-6 shadow cursor-pointer transition-all duration-300 border-2 border-transparent hover:border-emerald-400">
-        <div class="text-2xl mb-3">✨</div>
-        <h3 class="font-bold text-gray-800 mb-1 group-hover:text-emerald-500 transition-colors duration-300">Border Reveal</h3>
-        <p class="text-sm text-gray-500">A border appears smoothly when you hover.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 4: Notification Badges</h2>
-    <div class="flex flex-wrap gap-12 justify-center items-center bg-white rounded-xl p-8 shadow">
-
-      <div class="flex flex-col items-center gap-2">
-        <div class="relative">
-          <svg class="w-9 h-9 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-          </svg>
-          <span class="absolute -top-1 -right-1 flex h-4 w-4">
-            <span class="animate-ping absolute h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span class="relative flex h-4 w-4 rounded-full bg-red-500 text-white text-xs items-center justify-center">3</span>
-          </span>
-        </div>
-        <p class="text-xs text-gray-500">Bell + ping</p>
-      </div>
-
-      <div class="flex flex-col items-center gap-2">
-        <div class="relative">
-          <svg class="w-9 h-9 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3v-3z"/>
-          </svg>
-          <span class="absolute -top-1 -right-1 flex h-4 w-4">
-            <span class="animate-pulse absolute h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span class="relative flex h-4 w-4 rounded-full bg-blue-500 text-white text-xs items-center justify-center">5</span>
-          </span>
-        </div>
-        <p class="text-xs text-gray-500">Message + pulse</p>
-      </div>
-
-      <div class="flex flex-col items-center gap-2">
-        <div class="relative">
-          <svg class="w-9 h-9 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-          <span class="absolute -top-1 -right-1 flex h-4 w-4">
-            <span class="animate-bounce absolute h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative flex h-4 w-4 rounded-full bg-green-500 text-white text-xs items-center justify-center">2</span>
-          </span>
-        </div>
-        <p class="text-xs text-gray-500">Email + bounce</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 5: Loading States</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-
-      <div class="bg-white rounded-xl p-5 shadow space-y-3">
-        <div class="h-4 bg-gray-200 rounded animate-pulse"></div>
-        <div class="h-4 bg-gray-200 rounded animate-pulse w-5/6"></div>
-        <div class="h-4 bg-gray-200 rounded animate-pulse w-4/6"></div>
-        <div class="h-16 bg-gray-200 rounded-lg animate-pulse"></div>
-        <p class="text-xs text-center text-gray-400">Skeleton card</p>
-      </div>
-
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center justify-center gap-3">
-        <button class="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2 rounded-lg cursor-not-allowed">
-          <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
-          </svg>
-          Loading...
-        </button>
-        <p class="text-xs text-gray-400">Button with spinner</p>
-      </div>
-
-      <div class="bg-white rounded-xl p-5 shadow flex flex-col items-center justify-center gap-3">
-        <div class="flex gap-2">
-          <div class="w-3 h-3 rounded-full bg-indigo-500 animate-bounce" style="animation-delay:0ms"></div>
-          <div class="w-3 h-3 rounded-full bg-pink-500 animate-bounce" style="animation-delay:150ms"></div>
-          <div class="w-3 h-3 rounded-full bg-green-500 animate-bounce" style="animation-delay:300ms"></div>
-        </div>
-        <p class="text-xs text-gray-400">Bouncing dots</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-xl font-bold text-gray-800 mb-6">Section 6: Staggered Animations</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="bg-white rounded-xl p-5 shadow text-center card-d0">
-        <div class="text-2xl mb-2">🌟</div>
-        <p class="font-bold text-gray-700">Card One</p>
-        <p class="text-xs text-gray-400 mt-1">0ms delay</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 shadow text-center card-d1">
-        <div class="text-2xl mb-2">🎯</div>
-        <p class="font-bold text-gray-700">Card Two</p>
-        <p class="text-xs text-gray-400 mt-1">150ms delay</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 shadow text-center card-d2">
-        <div class="text-2xl mb-2">🔥</div>
-        <p class="font-bold text-gray-700">Card Three</p>
-        <p class="text-xs text-gray-400 mt-1">300ms delay</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 shadow text-center card-d3">
-        <div class="text-2xl mb-2">💡</div>
-        <p class="font-bold text-gray-700">Card Four</p>
-        <p class="text-xs text-gray-400 mt-1">450ms delay</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
+<!-- Section 6 -->
+<h2 class="font-semibold mb-2">Staggered Animations</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:0ms">Card 1</div>
+  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:150ms">Card 2</div>
+  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:300ms">Card 3</div>
+  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:450ms">Card 4</div>
+</div>
 </body>
 </html>
