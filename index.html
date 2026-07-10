@@ -4,18 +4,28 @@
 <meta charset="UTF-8">
 <title>Animations & UI Feedback</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade { animation: fadeUp 0.5s ease forwards; opacity: 0; }
-</style>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        keyframes: {
+          fadeup: {
+            '0%': { opacity: 0, transform: 'translateY(15px)' },
+            '100%': { opacity: 1, transform: 'translateY(0)' }
+          }
+        },
+        animation: {
+          fadeup: 'fadeup 0.5s ease forwards'
+        }
+      }
+    }
+  }
+</script>
 </head>
 <body class="bg-gray-100 text-gray-800 p-6">
 <h1 class="text-2xl font-bold text-center">Animations & UI Feedback</h1>
 <p class="text-center text-gray-500 mb-8">hover, click or wait to see the animations</p>
-
+<!-- Section 1 -->
 <h2 class="font-semibold mb-2">Built-in Animations</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
   <div class="bg-white rounded shadow p-3 text-center">
@@ -92,20 +102,23 @@
       Loading
     </button>
   </div>
+  <!-- dots use built-in animate-bounce plus tailwind's arbitrary value syntax for the delay -->
+  <!-- this replaces the old style="animation-delay:.2s" inline attribute -->
   <div class="bg-white rounded shadow p-3 flex items-center justify-center gap-1">
-    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></span>
-    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay:.2s"></span>
-    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay:.4s"></span>
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:0ms]"></span>
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:200ms]"></span>
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:400ms]"></span>
   </div>
 </div>
 
-<!-- Section 6 -->
+<!-- Section 6: Staggered Animations -->
 <h2 class="font-semibold mb-2">Staggered Animations</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:0ms">Card 1</div>
-  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:150ms">Card 2</div>
-  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:300ms">Card 3</div>
-  <div class="fade bg-white rounded shadow p-3 text-sm" style="animation-delay:450ms">Card 4</div>
+  <div class="animate-fadeup [animation-delay:0ms] bg-white rounded shadow p-3 text-sm opacity-0">Card 1</div>
+  <div class="animate-fadeup [animation-delay:150ms] bg-white rounded shadow p-3 text-sm opacity-0">Card 2</div>
+  <div class="animate-fadeup [animation-delay:300ms] bg-white rounded shadow p-3 text-sm opacity-0">Card 3</div>
+  <div class="animate-fadeup [animation-delay:450ms] bg-white rounded shadow p-3 text-sm opacity-0">Card 4</div>
 </div>
+
 </body>
 </html>
